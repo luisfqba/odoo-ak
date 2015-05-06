@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="addenda_pepsi_company">
+            <field name="name">view.res.company.form.inh.l10n_mx_facturae.addenda.pepsi</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="model">res.company</field>
+            <field name="arch" type="xml">
+                 <xpath expr="//page[@string='Configuration']" position="after">
+                    <page string="Addenda">
+                        <group string="Pepsi Co.">
+                            <field name="addenda_pepsi_idproveedor"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

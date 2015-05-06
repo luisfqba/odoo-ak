@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="account_invoice_form_l10n_mx_facturae_addenda_pepsi">
+            <field name="name">account.invoice.form.l10n_mx_facturae_addenda_pepsi</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@string='Payments']" position="after">
+                    <page string="Addenda">
+                        <group string="Pepsi Co.">
+                            <field name="addenda_pepsi"/>
+                            <field name="addenda_pepsi_idpedido"/>
+                            <field name="addenda_pepsi_idrecepcion"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
