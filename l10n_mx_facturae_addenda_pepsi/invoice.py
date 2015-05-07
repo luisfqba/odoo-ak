@@ -4,6 +4,7 @@ from openerp.osv import fields, osv
 from openerp.tools.translate import _
 from openerp import pooler, tools
 from openerp import netsvc, release
+import re
 
 class account_invoice(osv.Model):
     _inherit = 'account.invoice'
