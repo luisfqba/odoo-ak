@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <openerp>
     <data>
-        <record model="ir.ui.view" id="inherit_account.invoice_form_ak_easy">
+        <record model="ir.ui.view" id="inherit_account_invoice_form_ak_easy">
             <field name="name">inherit.account.invoice.form.ak_easy</field>
             <field name="model">account.invoice</field>
             <field name="inherit_id" ref="account.invoice_form"/>
