@@ -25,6 +25,6 @@ class res_partner(osv.Model):
     _inherit = 'res.partner'
     _columns = {
         'giro_negocio': fields.char("Giro Negocio", size=150, required=False),
-        'nosotros': fields.selection((('i','Internet'),('r','Redes Sociales'),('o','Otro')),"Como se entero de nosotros"),
+        'nosotros': fields.selection((('i','Internet'),('r','Redes Sociales'),('n','Recomendacion'),('m','Mailing'),('c','Certificadora'),('f','Fabian Larrera'),('o','Otro')),"Como se entero de nosotros"),
         'empleados': fields.integer("Cant. Empleados", required=False),
     } 
