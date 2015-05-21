@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="account_invoice_form_l10n_mx_facturae_addenda_pepsi">
+            <field name="name">account.invoice.form.l10n_mx_facturae_addenda_pepsi</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group/group/field[@name='partner_id']" position="before">
+                    <field name="num_fact_proyecto"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

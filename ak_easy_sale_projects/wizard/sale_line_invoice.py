@@ -29,7 +29,7 @@ class sale_order_line_make_invoice_aktiva(osv.osv_memory):
     _name = "sale.order.line.make.invoice.aktiva"
     _description = "Sale OrderLine Make_invoice"
 
-    def _prepare_invoice(self, cr, uid, order, lines, date_invoice, context=None):
+    def _prepare_invoice(self, cr, uid, order, lines, date_invoice, num_linea, total_facturar, context=None):
         a = order.partner_id.property_account_receivable.id
         if order.partner_id and order.partner_id.property_payment_term.id:
             pay_term = order.partner_id.property_payment_term.id
@@ -50,6 +50,7 @@ class sale_order_line_make_invoice_aktiva(osv.osv_memory):
             'user_id': order.user_id and order.user_id.id or False,
             'company_id': order.company_id and order.company_id.id or False,
             'date_invoice': date_invoice.strftime('%Y-%m-%d'),
+            'num_fact_proyecto': "%d de %d" % (num_linea,total_facturar)
         }
 
     
@@ -71,7 +72,7 @@ class sale_order_line_make_invoice_aktiva(osv.osv_memory):
         invoices = {}
 
     #TODO: merge with sale.py/make_invoice
-        def make_invoice(order, lines,date_invoice):
+        def make_invoice(order, lines, date_invoice,num_linea, total_facturar):
             """
                  To make invoices.
 
@@ -81,7 +82,7 @@ class sale_order_line_make_invoice_aktiva(osv.osv_memory):
                  @return:
 
             """
-            inv = self._prepare_invoice(cr, uid, order, lines,date_invoice)
+            inv = self._prepare_invoice(cr, uid, order, lines, date_invoice,num_linea, total_facturar)
             inv_id = self.pool.get('account.invoice').create(cr, uid, inv)
             return inv_id
 
@@ -90,6 +91,7 @@ class sale_order_line_make_invoice_aktiva(osv.osv_memory):
         wf_service = netsvc.LocalService('workflow')
         sale_order_ok = sales_order_obj.browse(cr, uid, context.get('active_ids'), context=context)
         num_linea = 0
+        total_facturar = len(sale_order_ok[0].order_line)
         for line in sale_order_ok[0].order_line:
             date_invoice = datetime.date.today()
             current_date=date_invoice + relativedelta(months=num_linea)            
@@ -100,7 +102,7 @@ class sale_order_line_make_invoice_aktiva(osv.osv_memory):
                 for lid in line_id:
                     invoices[line.order_id].append(lid)
                 for order, il in invoices.items():
-                    res = make_invoice(order, il,current_date)
+                    res = make_invoice(order, il,current_date,num_linea+1,total_facturar,)
                     cr.execute('INSERT INTO sale_order_invoice_rel \
                             (order_id,invoice_id) values (%s,%s)', (order.id, res))
                     line.order_id.write({'state': 'progress'})

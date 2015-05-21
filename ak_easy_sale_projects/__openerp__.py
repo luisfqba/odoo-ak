@@ -48,6 +48,7 @@
     "demo_xml" : [],
     "update_xml" : [
                     "sale_view.xml",
+                    "invoice_view.xml",
                     'wizard/sale_line_invoice.xml',
                     #'security/ir.model.access.csv',
                     ],
