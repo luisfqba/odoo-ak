@@ -1,0 +1,16 @@
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="view_account_invoice_filter_inherit">
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+            <field name="arch" type="xml">
+            	<xpath expr="/search[@string='Search Invoice']/field[@name='period_id']" position="after">
+            		<field name="name"/>
+	            </xpath>	  
+                <xpath expr="/search[@string='Search Invoice']/group[@string='Group By...']/filter[@string='Due Date']" position="after">
+	            	<filter string="Referencia de Cliente" icon="terp-personal" domain="[]" context="{'group_by':'name'}"/>
+	            </xpath>               
+            </field>
+        </record>
+	</data>
+</openerp>

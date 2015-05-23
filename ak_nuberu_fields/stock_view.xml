@@ -1,0 +1,16 @@
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="view_move_search_inherit">
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_search"/>
+            <field name="arch" type="xml">
+            	<xpath expr="/search[@string='Stock Moves']/field[@name='prodlot_id']" position="after">
+            		<field name="partner_id"/>
+	            </xpath>	  
+                <xpath expr="/search[@string='Stock Moves']/group[@string='Group By...']/filter[@string='Destination']" position="after">
+	            	<filter string="Empresa" icon="terp-personal" domain="[]" context="{'group_by':'partner_id'}"/>
+	            </xpath>               
+            </field>
+        </record>
+	</data>
+</openerp>

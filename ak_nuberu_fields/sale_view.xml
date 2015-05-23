@@ -1,0 +1,16 @@
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="view_sales_order_filter_inherit">
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="arch" type="xml">
+            	<xpath expr="/search[@string='Search Sales Order']/field[@name='project_id']" position="after">
+            		<field name="client_order_ref"/>
+	            </xpath>	  
+                <xpath expr="/search[@string='Search Sales Order']/group[@string='Group By...']/filter[@string='Order Date']" position="after">
+	            	<filter string="Referencia de Cliente" icon="terp-personal" domain="[]" context="{'group_by':'client_order_ref'}"/>
+	            </xpath>               
+            </field>
+        </record>
+	</data>
+</openerp>

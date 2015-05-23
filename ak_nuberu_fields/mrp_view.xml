@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--
+        Production Management
+        -->
+        <record id="mrp_production_form_view_inherit" model="ir.ui.view">
+            <field name="name">mrp.production.form.inherit</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view" />
+            <field name="arch" type="xml">
+            	<xpath expr="//sheet/group/group/field[@name='origin']" position="after">
+	            	<field name="type_order"/>	
+	            </xpath>
+            </field>
+        </record>
+        <!--
+        <record id="mrp_production_tree_view" model="ir.ui.view">
+            <field name="name">mrp.production.tree</field>
+            <field name="model">mrp.production</field>
+            <field name="arch" type="xml">
+                <tree fonts="bold:message_unread==True" colors="blue:state in ('draft','confirmed');red:date_planned&lt;current_date and state not in ('done','cancel');black:date_planned&gt;=current_date;gray:state in ('done','cancel') " string="Manufacturing Orders">
+                    <field name="message_unread" invisible="1"/>
+                    <field name="name"/>
+                    <field name="date_planned"/>
+                    <field name="product_id"/>
+                    <field name="product_qty" sum="Total Qty"/>
+                    <field name="product_uom" groups="product.group_uom"/>
+                    <field name="routing_id" groups="mrp.group_mrp_routings"/>
+                    <field name="hour_total" sum="Total Hours"/>
+                    <field name="cycle_total" sum="Total Cycles"/>
+                    <field name="origin"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+		-->
+        <record id="view_mrp_production_filter_inherit" model="ir.ui.view">
+            <field name="model">mrp.production</field>
+        	<field name="inherit_id" ref="mrp.view_mrp_production_filter"/>
+            <field name="arch" type="xml">
+            	<xpath expr="/search[@string='Search Production']/field[@name='routing_id']" position="after">
+	            	<field name="type_order"/>
+	            </xpath>	  
+               <xpath expr="/search[@string='Search Production']/group[@string='Group By...']/filter[@string='Date']" position="after">
+	            	<filter string="Tipo de Orden" icon="terp-personal" domain="[]" context="{'group_by':'type_order'}"/>
+	            </xpath> 
+            </field>
+        </record>       
+    </data>
+</openerp>
