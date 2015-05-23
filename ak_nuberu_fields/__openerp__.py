@@ -20,16 +20,15 @@
 ##############################################################################
 
 {
-    'name': 'AK Nuberu Campos',
+    'name': 'Ak Nuberu Campos',
     'version': '0.1',
     'description': """Modulo que agrega nuevos campos a Modelos Nuberu""",
-    'author': 'luisfqba.com.mx',
+    'author': 'luisfqba@gmail.com',
     'update_xml': [
         "mrp_view.xml","sale_view.xml","invoice_view.xml","stock_view.xml",
         ],
     "depends": [
             "base","mrp",
-            #"l10n_mx_partner_address"
                 ],
     'active': True,
     'installable': True,
