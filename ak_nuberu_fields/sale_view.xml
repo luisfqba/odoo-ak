@@ -1,5 +1,15 @@
 <openerp>
 	<data>
+		<record id="view_order_form_inherit" model="ir.ui.view">
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='order_line']/tree/field[@name='name']" position="after">
+            		<field name="ref_partner_nu"/>
+	            </xpath>	          
+            </field>
+		</record>
+		
 		<record model="ir.ui.view" id="view_sales_order_filter_inherit">
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_sales_order_filter"/>
@@ -14,3 +24,4 @@
         </record>
 	</data>
 </openerp>
+
