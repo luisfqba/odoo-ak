@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    
+        <record model="ir.ui.view" id="purchase_order_form_nuberu_inherit">
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='order_line']/tree/field[@name='date_planned']" position="after">
+            		<field name="orden_trabajo"/>
+	            </xpath>	            	
+            </field>
+        </record>
+    </data>
+</openerp>

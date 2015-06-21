@@ -25,7 +25,7 @@
     'description': """Modulo que agrega nuevos campos a Modelos Nuberu""",
     'author': 'luisfqba@gmail.com',
     'update_xml': [
-        "mrp_view.xml","sale_view.xml","invoice_view.xml","stock_view.xml",
+        "mrp_view.xml","sale_view.xml","invoice_view.xml","stock_view.xml","purchase_view.xml",
         ],
     "depends": [
             "base","mrp",
