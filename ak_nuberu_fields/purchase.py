@@ -25,5 +25,67 @@ from openerp.osv import osv, fields
 class purchase_order_line(osv.Model):
     _inherit = "purchase.order.line"
     _columns = {
-        'orden_trabajo': fields.char('Orden de trabajo',size = 20),
+        'product_order_id': fields.many2one('mrp.production', 'Orden de Produccion'),   
      }
+
+class purchase_requisition_line(osv.Model):
+    _inherit = "purchase.requisition.line"
+    _columns = {
+        'product_order_id': fields.many2one('mrp.production', 'Orden de Produccion'),
+     }
+
+class purchase_requisition(osv.Model):
+    _inherit = "purchase.requisition"
+
+    """
+     Se sobreescribe el metodo para pasar la orden de trabajo(product_order_id) desde
+     la requisision a la orden de compra.  
+    """
+    def make_purchase_order(self, cr, uid, ids, partner_id, context=None):
+        """
+        Create New RFQ for Supplier
+        """
+        if context is None:
+            context = {}
+        assert partner_id, 'Supplier should be specified'
+        purchase_order = self.pool.get('purchase.order')
+        purchase_order_line = self.pool.get('purchase.order.line')
+        res_partner = self.pool.get('res.partner')
+        fiscal_position = self.pool.get('account.fiscal.position')
+        supplier = res_partner.browse(cr, uid, partner_id, context=context)
+        supplier_pricelist = supplier.property_product_pricelist_purchase or False
+        res = {}
+        for requisition in self.browse(cr, uid, ids, context=context):
+            if supplier.id in filter(lambda x: x, [rfq.state <> 'cancel' and rfq.partner_id.id or None for rfq in requisition.purchase_ids]):
+                 raise osv.except_osv(_('Warning!'), _('You have already one %s purchase order for this partner, you must cancel this purchase order to create a new quotation.') % rfq.state)
+            location_id = requisition.warehouse_id.lot_input_id.id
+            purchase_id = purchase_order.create(cr, uid, {
+                        'origin': requisition.name,
+                        'partner_id': supplier.id,
+                        'pricelist_id': supplier_pricelist.id,
+                        'location_id': location_id,
+                        'company_id': requisition.company_id.id,
+                        'fiscal_position': supplier.property_account_position and supplier.property_account_position.id or False,
+                        'requisition_id':requisition.id,
+                        'notes':requisition.description,
+                        'warehouse_id':requisition.warehouse_id.id ,
+            })
+            res[requisition.id] = purchase_id
+            for line in requisition.line_ids:
+                product = line.product_id
+                seller_price, qty, default_uom_po_id, date_planned = self._seller_details(cr, uid, line, supplier, context=context)
+                taxes_ids = product.supplier_taxes_id
+                taxes = fiscal_position.map_tax(cr, uid, supplier.property_account_position, taxes_ids)
+                purchase_order_line.create(cr, uid, {
+                    'order_id': purchase_id,
+                    'name': product.partner_ref,
+                    'product_qty': qty,
+                    'product_id': product.id,
+                    'product_uom': default_uom_po_id,
+                    'price_unit': seller_price,
+                    'date_planned': date_planned,
+                    'taxes_id': [(6, 0, taxes)],
+                    'product_order_id':line.product_order_id.id,#orden de produccion proveniente de la requisicion
+                }, context=context)
+                
+        return res

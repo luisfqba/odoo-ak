@@ -6,10 +6,20 @@
             <field name="model">purchase.order</field>
             <field name="inherit_id" ref="purchase.purchase_order_form"/>
             <field name="arch" type="xml">
-            	<xpath expr="//field[@name='order_line']/tree/field[@name='date_planned']" position="after">
-            		<field name="orden_trabajo"/>
+            	<xpath expr="//field[@name='order_line']/tree/field[@name='product_id']" position="after">
+            		<field name="product_order_id"/>
 	            </xpath>	            	
             </field>
         </record>
+        
+        <record model="ir.ui.view" id="view_purchase_requisition_form_nuberu_inherit">
+        	<field name="model">purchase.requisition</field>
+        	<field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>
+        	<field name="arch" type="xml">
+    	    	<xpath expr="//field[@name='line_ids']/tree/field[@name='product_uom_id']" position="after">
+            		<field name="product_order_id"/>
+	            </xpath>
+            </field>
+    	</record>
     </data>
 </openerp>

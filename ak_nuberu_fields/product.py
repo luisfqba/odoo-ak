@@ -1,6 +1,4 @@
 from openerp.osv import osv, fields
-from warnings import catch_warnings
-
 
 class product_product(osv.Model):
     _name = 'product.product'
@@ -21,7 +19,5 @@ class product_product(osv.Model):
 
 
     _columns = {
-        'rate_price_supllier': fields.function(get_rate_price_supllier, type='float', method=True, string='Precio Tarifa Unitario'),
+        'rate_price_supllier': fields.function(get_rate_price_supllier, type='float', method=True, string='Precio Unitario Proveedor'),
     }
-
-product_product()

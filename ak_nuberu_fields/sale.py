@@ -26,13 +26,3 @@ class sale_order_line(osv.Model):
     _columns = {
         'ref_partner_nu': fields.char('Referencia Cliente', size=50),
         }
-"""
-class sale_order(osv.Model):
-    _name = 'sale.order'
-    _inherit = 'sale.order'
-
-    def _prepare_order_line_move(self, cr, uid, order, line, picking_id, date_planned, context=None):
-        res = super(sale_order, self)._prepare_order_line_move(cr, uid, order=order, line=line, picking_id=picking_id, date_planned=date_planned, context=context)
-        res['ref_partner_nu'] = line.ref_partner_nu
-        return res
-"""
