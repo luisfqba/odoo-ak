@@ -19,7 +19,7 @@
 #
 ##############################################################################
 
-from openerp.osv import osv, fields
+from openerp.osv import orm, fields
 
 # ----------------------------------------------------
 # Incoveniente al cambiar la Categoria del Producto debido a que
@@ -27,10 +27,26 @@ from openerp.osv import osv, fields
 # implementar luego funcionalidad para actualizar la Categoria almacenada
 # ----------------------------------------------------
 
-class stock_move(osv.Model):
+class stock_move(orm.Model):
     _inherit = "stock.move"
     _columns = {
         'categ_id': fields.related('product_id','categ_id','name',type='char', relation="product.product", string="Categoria Producto", store=True),
+    }
+
+class stock_picking(orm.Model):
+    _inherit = 'stock.picking'
+    _columns = {
+        'client_order_ref': fields.related('sale_id','client_order_ref',type='char', relation='sale.order',
+                                   string='Refencia del Cliente'),
+    }
+
+class stock_picking_out(orm.Model):
+    _inherit = 'stock.picking.out'
+    
+    _columns = {
+        'client_order_ref': fields.related('sale_id','client_order_ref',type='char', relation='sale.order',
+                                   string='Refencia Cliente'),          
+
     }
     
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
