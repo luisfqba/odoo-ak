@@ -28,5 +28,17 @@
             </field>
         </record>
         
+        <!-- Adding Date Done to picking in -->
+
+        <record id="stock_picking_in_tree_inherit_nueru" model="ir.ui.view">
+            <field name="model">stock.picking.in</field>
+            <field name="inherit_id" ref="stock.view_picking_in_tree"/>
+            <field name="arch" type="xml">
+                <field name="min_date" position="after">
+                     <field name="date_done" string="Fecha de recepcion"/>
+                </field>
+            </field>
+        </record>
+        
 	</data>
 </openerp>
