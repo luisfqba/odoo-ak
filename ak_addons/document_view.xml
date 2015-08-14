@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+	    <menuitem name="Document Management" id="menu_document_management_configuration" parent="knowledge.menu_document_configuration" sequence="1"/>
+	
+	    <record model="ir.ui.view" id="view_document_directory_form_inherit">
+	        <field name="model">document.directory</field>
+	        <field name="inherit_id" ref="document.view_document_directory_form" />
+	        <field name="arch" type="xml">
+		    	<xpath expr="//form/notebook/page/group/field[@name='resource_find_all']" position="after">
+		        	<field name="invoice_e"/>	
+		        </xpath>
+	        </field>
+	    </record>
+	</data>
+</openerp>
+
