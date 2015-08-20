@@ -19,22 +19,11 @@
 #
 ##############################################################################
 
-{
-    'name': 'AK Addons',
-    'version': '0.1',
-    'description': """Funcionalidades Aktiva""",
-    'author': 'luisfqba.com.mx',
-    'update_xml': [
-        "document_view.xml",
-        ],
-    "depends": [
-            "base",
-            "document",
-            "account",
-            "sale",
-                ],
-    'active': True,
-    'installable': True,
-}
+from openerp.osv import osv, fields
 
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+class account_invoice(osv.Model):
+    _inherit = 'account.invoice'
+    _columns = {
+        'sale_ext_origin': fields.char("Origen Externo Cotizacion", size=150),
+    } 
+    
