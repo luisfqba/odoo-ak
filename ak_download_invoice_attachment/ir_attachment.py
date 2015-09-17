@@ -3,8 +3,8 @@
 #
 #    OpenERP, Open Source Management Solution
 #
-#    Copyright (C) 2014 Didotech srl (<http://www.didotech.com>).
-#
+#    Copyright (C) 2015-Today Aktiva Consultoria en Calidad SC (<http://www.aktiva.com.mx>)
+#    Copyright (C) 2004 OpenERP SA (<http://www.openerp.com>)
 #                       All Rights Reserved
 #
 #    This program is free software: you can redistribute it and/or modify

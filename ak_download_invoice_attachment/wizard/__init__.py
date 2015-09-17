@@ -2,7 +2,6 @@
 ##############################################################################
 #
 #    OpenERP, Open Source Management Solution
-#
 #    Copyright (C) 2015-Today Aktiva Consultoria en Calidad SC (<http://www.aktiva.com.mx>)
 #    Copyright (C) 2004 OpenERP SA (<http://www.openerp.com>)
 #                       All Rights Reserved
@@ -18,27 +17,10 @@
 #    GNU General Public License for more details.
 #
 #    You should have received a copy of the GNU General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>
 #
 ##############################################################################
 
-{
-    "name": "Ak Download Facturae Invoice Attachment",
-    "version": "1.0",
-    "author": "luisfqba@gmail.com",
-    "website": "http://www.aktiva.com.mx",
-    "category": "Sales Management",
-    "description": """
-        Module permits to download all  Facturae Invoice attachments in a single ZIP file.
-    """,
-    "depends": [
-        'base',
-        'account',
-    ],
-    "init_xml": [],
-    "update_xml": [
-        'wizard/attachment_wizard_view.xml'
-    ],
-    "active": False,
-    "installable": True,
-}
+from . import attachment_wizard
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
