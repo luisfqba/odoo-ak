@@ -30,13 +30,14 @@ class sale_order(osv.osv):
     _columns = {
         'product_on_id':fields.many2one('product.product','Proyecto', required=False,),
         'product_qty': fields.integer('Cantidad'),
+        'proyect_price': fields.float('Precio'),
         }
 
     _defaults = {  
         'product_qty': 1,
         }
 
-    def on_change_load_products(self, cr, uid, ids, partner_id, product_on_id, product_qty, order_line, context=None):
+    def on_change_load_products(self, cr, uid, ids, partner_id, product_on_id, product_qty, order_line, proyect_price, context=None):
         # pos_line_obj = self.pool.get('pos.order.line')
         product_obj = self.pool.get('product.product')
         salesman_obj = self.pool.get('res.users')
@@ -69,7 +70,7 @@ class sale_order(osv.osv):
                         'name': product_name,
                         'tax_id': [(6, 0, [_w for _w in fpos_obj.map_tax(cr, uid, fpos, product_br.taxes_id)])],
                         'product_uom_qty': 1,
-                        'price_unit': product_br.list_price/qty_product,
+                        'price_unit': proyect_price/qty_product,
                         'product_uom': product_br.uom_id.id,    
                         'product_uos_qty': 1,
                         'state': 'draft',
