@@ -83,8 +83,7 @@
                                         <div class="act_as_cell" style="text-align:center;">
                                             <b>${o.partner_id.name}</b><br> <br>                                            
                                         </div>
-                                    </div>  
-                                                                     
+                                    </div>                                                                      
                                 </div>
                             </div>                             
                         </div>
@@ -101,7 +100,10 @@
                                 <b>${_("FECHA")}</b>
                             </div>
                             <div class="act_as_cell" style="border:1px solid #D3D3D3; color:#4B0082;text-align:center; padding:5px;">
-                                <b>${_("X de y")}</b>
+                                <b>${_("X de Y")}</b>
+                            </div>
+                            <div class="act_as_cell" style="border:1px solid #D3D3D3; color:#4B0082; text-align:center; padding:5px;">
+                                <b>${_("ORIGEN")}</b>
                             </div>
                             <div class="act_as_cell" style="border:1px solid #D3D3D3; color:#4B0082; text-align:center; padding:5px;">
                                 <b>${_("ESTADO")}</b>
@@ -119,7 +121,10 @@
                                 ${ l[3] or 'No identificado'}
                             </div>
                             <div class="act_as_cell" style="border:1px solid #D3D3D3; text-align:center; padding:5px;">
-                               %if l[4] == 'paid': 
+                                ${ l[4] or 'No identificado'}
+                            </div>
+                            <div class="act_as_cell" style="border:1px solid #D3D3D3; text-align:center; padding:5px;">
+                               %if l[5] == 'paid': 
                                  	Pagado
                                 % else: 
                                 	Abierto                                	

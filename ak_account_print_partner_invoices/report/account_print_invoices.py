@@ -39,7 +39,7 @@ class PrintPartnerInvoice(report_sxw.rml_parse):
         })       
            
     def _get_partner_invoice(self,invoice): 
-        sql_query = "SELECT id, number, date_invoice, num_fact_proyecto, state from account_invoice  where partner_id = "+str(invoice.partner_id.id)+" and state in ('paid','open')"
+        sql_query = "SELECT id, number, date_invoice, num_fact_proyecto,sale_ext_origin, state from account_invoice  where partner_id = "+str(invoice.partner_id.id)+" and state in ('paid','open')"
         self.cr.execute(sql_query)    
         result = self.cr.fetchall()
         return result     
