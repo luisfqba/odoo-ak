@@ -1,0 +1,14 @@
+<openerp>
+	<data>
+	
+	    <report auto="False"
+	     id="report_account_print_partner_invoices"
+	     model="account.invoice"
+	    name="account.invoice.partner.webkit"
+	    file="ak_account_print_partner_invoices/report/account_print_invoices.mako"
+	    string="Partner invoices PDF"
+	    report_type="webkit"/>
+	    
+	</data>
+</openerp>
+
