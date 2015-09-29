@@ -24,6 +24,7 @@
 import openerp
 from openerp.tools.translate import _
 from openerp.report import report_sxw
+import time
 
 class PrintPartnerInvoice(report_sxw.rml_parse):
     
@@ -34,6 +35,7 @@ class PrintPartnerInvoice(report_sxw.rml_parse):
             'get_invoices':  self._get_partner_invoice,
             'get_emitter_data': self._get_emitter_data,
             'get_partner_data': self._get_partner_data,
+            'time':time.strftime('%d de %B del %Y'),
         })       
            
     def _get_partner_invoice(self,invoice): 

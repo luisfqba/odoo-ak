@@ -62,17 +62,35 @@
                                     <div class="act_as_row" style="text-align:left;">
                                         <div class="act_as_cell" style="padding:0px;">
                                             ${_("PHONE")}(s): 
-                                            ${o.company_emitter_id.address_invoice_parent_company_id.phone or 'N/A'}  
+                                            ${o.company_emitter_id.address_invoice_parent_company_id.phone or 'N/A'} 
                                        </div>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="act_as_cell" style="border:1px solid black;">
+                                <div class="act_as_table">
+                                    <div class="act_as_row">
+                                        <div class="act_as_cell" style="color:red; text-align:center; font-size:18px;">
+                                            <b>ESTADO DE CUENTA </b>
+                                        </div>
+                                    </div> 
+                                    <div class="act_as_row">
+                                        <div class="act_as_cell" style="text-align:center;">                                            
+                                            ${time}
+                                        </div>
+                                    </div> 
+                                    <div class="act_as_row">
+                                        <div class="act_as_cell" style="text-align:center;">
+                                            <b>${o.partner_id.name}</b><br> <br>                                            
+                                        </div>
+                                    </div>  
+                                                                     
                                 </div>
                             </div>                             
                         </div>
                     </div>  
+                    </br>
                     
-                    <div style="solid #D3D3D3; color:#4B0082; text-align:center; padding:10px;">
-                    	<b>ESTADO DE FACTURAS</b>
-                    </div>
                                     
                     <div class="act_as_table">
                         <div class="act_as_row">
@@ -101,10 +119,10 @@
                                 ${ l[3] or 'No identificado'}
                             </div>
                             <div class="act_as_cell" style="border:1px solid #D3D3D3; text-align:center; padding:5px;">
-                                %if l[1] == o.number:
-                                	<b>${ 'Factura Adjunta'}</b>
+                               %if l[4] == 'paid': 
+                                 	Pagado
                                 % else: 
-                                	No identificado
+                                	Abierto                                	
                                 %endif
                             </div>
                         </div>
