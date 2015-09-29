@@ -34,8 +34,9 @@
     "depends": [
         "account",
         "document",
-        'report_webkit',
+        "report_webkit",
         "l10n_mx_facturae",
+        "ak_addons",
     ],
     "update_xml": [
         'report/account_print_invoices.xml'
