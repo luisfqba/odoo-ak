@@ -50,7 +50,8 @@ class sale_order_line_make_invoice_aktiva(osv.osv_memory):
             'user_id': order.user_id and order.user_id.id or False,
             'company_id': order.company_id and order.company_id.id or False,
             'date_invoice': date_invoice.strftime('%Y-%m-%d'),
-            'num_fact_proyecto': "%d de %d" % (num_linea,total_facturar)
+            'num_fact_proyecto': "%d de %d" % (num_linea,total_facturar),
+            'sale_ext_origin': order.origin,
         }
 
     
