@@ -26,6 +26,7 @@
     'author': 'luisfqba.com.mx',
     'update_xml': [
         "document_view.xml",
+        "sale_view.xml",
         ],
     "depends": [
             "base",
