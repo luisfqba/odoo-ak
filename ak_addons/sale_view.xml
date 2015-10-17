@@ -6,7 +6,7 @@
 	            <field name="type">form</field>
 	            <field name="inherit_id" ref="sale.view_order_form"/>
 	            <field name="arch" type="xml">
-	            	<xpath expr="//page/field[name='origin']" position="replace">
+	            	<xpath expr="//page/group//group/field[@name='origin']" position="replace">
 					    <field name="origin"/>	
 					</xpath>  
 	            </field>
