@@ -146,17 +146,17 @@
                             </div>
                             <!--
                             <div class="act_as_cell" style="border:1px solid #D3D3D3; text-align:center; padding:5px;">
-                                ${ l[5] or '0.0'}
+                                ${formatLang(l[5]) or '0.0'}
                             </div>
                             -->
                             <div class="act_as_cell" style="border:1px solid #D3D3D3; text-align:center; padding:5px;">
-                                ${ l[6] or '0.0'}
+                                ${formatLang(l[6]) or '0.0'}
                             </div>
                              <div class="act_as_cell" style="border:1px solid #D3D3D3; text-align:center; padding:5px;">
-                                ${ l[7] or '0.0'}
+                                ${formatLang(l[7]) or '0.0'}
                             </div>
                             <div class="act_as_cell" style="border:1px solid #D3D3D3; text-align:center; padding:5px;">
-                                ${ l[8] or '0.0'}
+                                ${formatLang(l[8]) or '0.0'}
                             </div>
                             <div class="act_as_cell" style="border:1px solid #D3D3D3; text-align:center; padding:5px;">
                                %if l[9] == 'paid': 
