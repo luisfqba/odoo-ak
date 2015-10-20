@@ -35,14 +35,21 @@ class PrintPartnerInvoice(report_sxw.rml_parse):
             'get_invoices':  self._get_partner_invoice,
             'get_emitter_data': self._get_emitter_data,
             'get_partner_data': self._get_partner_data,
+            'get_partner_invoice_total':self._get_partner_invoice_total,
             'time':time.strftime('%d de %B del %Y'),
         })       
            
     def _get_partner_invoice(self,invoice): 
-        sql_query = "SELECT id, number, date_invoice, num_fact_proyecto,sale_ext_origin, state from account_invoice  where partner_id = "+str(invoice.partner_id.id)+" and state in ('paid','open')"
+        sql_query = "SELECT id, number, date_invoice, num_fact_proyecto,sale_ext_origin, residual, amount_tax, amount_untaxed, amount_total, state from account_invoice  where partner_id = "+str(invoice.partner_id.id)+" and state in ('paid','open')"
         self.cr.execute(sql_query)    
         result = self.cr.fetchall()
         return result     
+    
+    def _get_partner_invoice_total(self,invoice): 
+        sql_query = "SELECT SUM(residual), SUM(amount_total) from account_invoice  where partner_id = "+str(invoice.partner_id.id)+" and state in ('open')"
+        self.cr.execute(sql_query)    
+        result = self.cr.fetchone()        
+        return result
     
     def _get_emitter_data(self, partner, data='name'):
         # Simple cache for speed up

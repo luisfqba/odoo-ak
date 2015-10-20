@@ -81,9 +81,16 @@
                                     </div> 
                                     <div class="act_as_row">
                                         <div class="act_as_cell" style="text-align:center;">
-                                            <b>${o.partner_id.name}</b><br> <br>                                            
+                                            <b>${o.partner_id.name}</b><br>                                            
                                         </div>
-                                    </div>                                                                      
+                                    </div> 
+                                    <!--
+                                    <div class="act_as_row">
+                                        <div class="act_as_cell" style="text-align:center;">
+                                            <b>DEBE <br>${get_partner_invoice_total(o)[0]} de ${get_partner_invoice_total(o)[1]}</b><br> <br>  
+                                        </div>
+                                    </div> 
+                                    -->                                                                     
                                 </div>
                             </div>                             
                         </div>
@@ -105,6 +112,20 @@
                             <div class="act_as_cell" style="border:1px solid #D3D3D3; color:#4B0082; text-align:center; padding:5px;">
                                 <b>${_("ORIGEN")}</b>
                             </div>
+                            <!--
+                            <div class="act_as_cell" style="border:1px solid #D3D3D3; color:#4B0082; text-align:center; padding:5px;">
+                                <b>${_("DEBE")}</b>
+                            </div>
+                            -->
+                            <div class="act_as_cell" style="border:1px solid #D3D3D3; color:#4B0082; text-align:center; padding:5px;">
+                                <b>${_("IMPUESTO")}</b>
+                            </div>
+                            <div class="act_as_cell" style="border:1px solid #D3D3D3; color:#4B0082; text-align:center; padding:5px;">
+                                <b>${_("SUBTOTAL")}</b>
+                            </div>
+                            <div class="act_as_cell" style="border:1px solid #D3D3D3; color:#4B0082; text-align:center; padding:5px;">
+                                <b>${_("TOTAL")}</b>
+                            </div>
                             <div class="act_as_cell" style="border:1px solid #D3D3D3; color:#4B0082; text-align:center; padding:5px;">
                                 <b>${_("ESTADO")}</b>
                             </div>
@@ -123,8 +144,22 @@
                             <div class="act_as_cell" style="border:1px solid #D3D3D3; text-align:center; padding:5px;">
                                 ${ l[4] or 'No identificado'}
                             </div>
+                            <!--
                             <div class="act_as_cell" style="border:1px solid #D3D3D3; text-align:center; padding:5px;">
-                               %if l[5] == 'paid': 
+                                ${ l[5] or '0.0'}
+                            </div>
+                            -->
+                            <div class="act_as_cell" style="border:1px solid #D3D3D3; text-align:center; padding:5px;">
+                                ${ l[6] or '0.0'}
+                            </div>
+                             <div class="act_as_cell" style="border:1px solid #D3D3D3; text-align:center; padding:5px;">
+                                ${ l[7] or '0.0'}
+                            </div>
+                            <div class="act_as_cell" style="border:1px solid #D3D3D3; text-align:center; padding:5px;">
+                                ${ l[8] or '0.0'}
+                            </div>
+                            <div class="act_as_cell" style="border:1px solid #D3D3D3; text-align:center; padding:5px;">
+                               %if l[9] == 'paid': 
                                  	Pagado
                                 % else: 
                                 	Abierto                                	
