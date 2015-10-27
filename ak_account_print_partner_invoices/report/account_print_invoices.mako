@@ -107,7 +107,7 @@
                                 <b>${_("FECHA")}</b>
                             </div>
                             <div class="act_as_cell" style="border:1px solid #D3D3D3; color:#4B0082;text-align:center; padding:5px;">
-                                <b>${_("X de Y")}</b>
+                                <b>${_("PARCIALIDAD")}</b>
                             </div>
                             <div class="act_as_cell" style="border:1px solid #D3D3D3; color:#4B0082; text-align:center; padding:5px;">
                                 <b>${_("ORIGEN")}</b>
@@ -118,11 +118,12 @@
                             </div>
                             -->
                             <div class="act_as_cell" style="border:1px solid #D3D3D3; color:#4B0082; text-align:center; padding:5px;">
-                                <b>${_("IMPUESTO")}</b>
-                            </div>
-                            <div class="act_as_cell" style="border:1px solid #D3D3D3; color:#4B0082; text-align:center; padding:5px;">
                                 <b>${_("SUBTOTAL")}</b>
                             </div>
+                            <div class="act_as_cell" style="border:1px solid #D3D3D3; color:#4B0082; text-align:center; padding:5px;">
+                                <b>${_("IVA")}</b>
+                            </div>
+                            
                             <div class="act_as_cell" style="border:1px solid #D3D3D3; color:#4B0082; text-align:center; padding:5px;">
                                 <b>${_("TOTAL")}</b>
                             </div>
@@ -150,10 +151,10 @@
                             </div>
                             -->
                             <div class="act_as_cell" style="border:1px solid #D3D3D3; text-align:center; padding:5px;">
-                                ${formatLang(l[6]) or '0.0'}
+                                ${formatLang(l[7]) or '0.0'}
                             </div>
                              <div class="act_as_cell" style="border:1px solid #D3D3D3; text-align:center; padding:5px;">
-                                ${formatLang(l[7]) or '0.0'}
+                                ${formatLang(l[6]) or '0.0'}
                             </div>
                             <div class="act_as_cell" style="border:1px solid #D3D3D3; text-align:center; padding:5px;">
                                 ${formatLang(l[8]) or '0.0'}
