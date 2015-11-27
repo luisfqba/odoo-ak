@@ -27,6 +27,7 @@
     'update_xml': [
         "document_view.xml",
         "sale_view.xml",
+        "invoice_view.xml",
         ],
     "depends": [
             "base",

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="inherit_account_invoice_form_ak_addons">
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page/group/group/field[@name='origin']" position="before">
+                    <field name="sale_ext_origin" string = "Origen Aktiva"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="inherit_account_invoice_tree_ak_addons">
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_tree"/>
+            <field name="arch" type="xml">
+                <field name="number" position="after">
+                    <field name="sale_ext_origin" string = "Origen Aktiva"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>
